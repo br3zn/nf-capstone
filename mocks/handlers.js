@@ -1,0 +1,257 @@
+import { rest } from "msw";
+
+export const handlers = [
+  rest.get("/api/strains", (req, res, ctx) => {
+    return res(
+      ctx.json([
+        {
+          id: 510791,
+          averageRating: 5.0,
+          category: "Hybrid",
+          flowerImageSvg:
+            "https://public.leafly.com/strains/flowers/tropical-heat-flower.svg",
+          name: "Tropical Heat",
+          nugImage:
+            "https://images.leafly.com/flower-images/defaults/generic/strain-37.png",
+          phenotype: "Hybrid",
+          reviewCount: 2,
+          shortDescriptionPlain: null,
+          slug: "tropical-heat",
+          strainTopTerp: "caryophyllene",
+          subtitle: "aka Tropic Heat",
+          thc: 25.0,
+          topEffect: "Focused",
+          cannabinoids: {
+            cbc: {
+              displayName: "CBC",
+              order: 4,
+              percentile25: null,
+              percentile50: 0.0,
+              percentile75: null,
+            },
+            cbd: {
+              displayName: "CBD",
+              order: 3,
+              percentile25: 0.0,
+              percentile50: 0.0,
+              percentile75: 0.0,
+            },
+            cbg: {
+              displayName: "CBG",
+              order: 2,
+              percentile25: null,
+              percentile50: 1.0,
+              percentile75: null,
+            },
+            thc: {
+              displayName: "THC",
+              order: 1,
+              percentile25: 24.0,
+              percentile50: 25.0,
+              percentile75: 26.0,
+            },
+            thcv: {
+              displayName: "THCV",
+              order: 5,
+              percentile25: null,
+              percentile50: 0.0,
+              percentile75: null,
+            },
+          },
+          effects: {
+            aroused: {
+              name: "aroused",
+              icon: null,
+              score: -0.518119544152094,
+              type: null,
+              votes: null,
+            },
+            creative: {
+              name: "creative",
+              icon: null,
+              score: 1.94672127515191,
+              type: null,
+              votes: null,
+            },
+            energetic: {
+              name: "energetic",
+              icon: null,
+              score: -0.661168794246983,
+              type: null,
+              votes: null,
+            },
+            euphoric: {
+              name: "euphoric",
+              icon: null,
+              score: -1.36209963247428,
+              type: null,
+              votes: null,
+            },
+            focused: {
+              name: "focused",
+              icon: null,
+              score: 2.0337096630084,
+              type: null,
+              votes: null,
+            },
+            giggly: {
+              name: "giggly",
+              icon: null,
+              score: -0.698204563297866,
+              type: null,
+              votes: null,
+            },
+            happy: {
+              name: "happy",
+              icon: null,
+              score: 1.16523727383489,
+              type: null,
+              votes: null,
+            },
+            hungry: {
+              name: "hungry",
+              icon: null,
+              score: -0.7700837879544929,
+              type: null,
+              votes: null,
+            },
+            relaxed: {
+              name: "relaxed",
+              icon: null,
+              score: 0.8784656183291361,
+              type: null,
+              votes: null,
+            },
+            sleepy: {
+              name: "sleepy",
+              icon: null,
+              score: -0.644376988913994,
+              type: null,
+              votes: null,
+            },
+            talkative: {
+              name: "talkative",
+              icon: null,
+              score: -0.696408600315484,
+              type: null,
+              votes: null,
+            },
+            tingly: {
+              name: "tingly",
+              icon: null,
+              score: -0.688413567557031,
+              type: null,
+              votes: null,
+            },
+            uplifted: {
+              name: "uplifted",
+              icon: null,
+              score: 1.40691114871244,
+              type: null,
+              votes: null,
+            },
+          },
+          terps: {
+            caryophyllene: {
+              name: "caryophyllene",
+              description: null,
+              score: 0.523333333333333,
+            },
+            humulene: {
+              name: "humulene",
+              description: null,
+              score: 0.19,
+            },
+            limonene: {
+              name: "limonene",
+              description: null,
+              score: 0.43,
+            },
+            linalool: {
+              name: "linalool",
+              description: null,
+              score: 0.13,
+            },
+            myrcene: {
+              name: "myrcene",
+              description: null,
+              score: 0.233333333333333,
+            },
+            ocimene: {
+              name: "ocimene",
+              description: null,
+              score: 0.02,
+            },
+            pinene: {
+              name: "pinene",
+              description: null,
+              score: 0.106666666666667,
+            },
+            terpinolene: {
+              name: "terpinolene",
+              description: null,
+              score: 0.0366666666666667,
+            },
+          },
+        },
+        {
+          id: 510790,
+          averageRating: 0.0,
+          category: "Hybrid",
+          flowerImageSvg:
+            "https://public.leafly.com/strains/flowers/la-chomper-flower.svg",
+          name: "LA Chomper",
+          nugImage:
+            "https://images.leafly.com/flower-images/defaults/generic/strain-37.png",
+          phenotype: "Hybrid",
+          reviewCount: 0,
+          shortDescriptionPlain: null,
+          slug: "la-chomper",
+          strainTopTerp: null,
+          subtitle: null,
+          thc: null,
+          topEffect: null,
+          cannabinoids: {
+            cbc: {
+              displayName: "CBC",
+              order: 3,
+              percentile25: null,
+              percentile50: null,
+              percentile75: null,
+            },
+            cbd: {
+              displayName: "CBD",
+              order: 2,
+              percentile25: null,
+              percentile50: null,
+              percentile75: null,
+            },
+            cbg: {
+              displayName: "CBG",
+              order: 4,
+              percentile25: null,
+              percentile50: null,
+              percentile75: null,
+            },
+            thc: {
+              displayName: "THC",
+              order: 1,
+              percentile25: null,
+              percentile50: null,
+              percentile75: null,
+            },
+            thcv: {
+              displayName: "THCV",
+              order: 5,
+              percentile25: null,
+              percentile50: null,
+              percentile75: null,
+            },
+          },
+          effects: {},
+          terps: {},
+        },
+      ])
+    );
+  }),
+];
