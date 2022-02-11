@@ -1,25 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and powered with tailwindCSS, apollo/client and file linting.
+# "[Bubatz](https://bubatz.breznsoiza.com/)" - educational app about cannabis
+> This is my capstone project for a web developer bootcamp hosted by :fish: [neueFische](https://www.neuefische.de/)
 
-Husky will lint most changed files before commit.
+This project is for cannabis users who wants to get the most fitting strain recommendations, depending on the desired effect. You'll also find data about the terpenes, their effects and use-case and how the different consumption methods affect you.
+Since the legalisation of cannabis in germany is coming fast, I want to help cannabis users on their journey with important information to find the best solution for them.
 
-Jest and Cypress are ready for testing.
+_This is not about the best looking or most exotic sounding strains, but the benefits of using cannabis for different issues. There are enough portals covering this._
+
+## Features
+* Strain overview
+* Strain details
+* Bookmark strains
+* Information about terpenes and their effects
+* Information about consumption and their side effects
+* Keep track of your stash at home
+* Save personal notes
+
+Visit the [production build](https://bubatz.breznsoiza.com/) or take a look at the [development build](https://nf-capstone-bubatz-dev.vercel.app/).
 
 ---
 
-## Scripts
-
-```bash
-npm run dev # start local development server
-npm run build # build app in ".next" dir
-npm run start # start build on local server
-npm run lint # lint files
-npm run cy:open # open cypress gui
-npm run cy:run # run cypress tests headless
-npm run jest # run jest tests
-```
-
 ## Tech
-
 - next.js
 - tailwindCSS
 - postCSS
@@ -28,3 +28,4 @@ npm run jest # run jest tests
 - apollo/client
 - jest
 - cypress
+- msw
