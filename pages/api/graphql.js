@@ -22,6 +22,8 @@ const typeDefs = gql`
     name: String!
     phenotype: String
     slug: String
+    flowerImageSvg: String
+    shortDescriptionPlain: String
   }
   type Query {
     strains(skip: Int!, take: Int!): [Strain!]
