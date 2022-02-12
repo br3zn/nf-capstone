@@ -24,14 +24,14 @@ const typeDefs = gql`
     slug: String
   }
   type Query {
-    strains: [Strain!]
+    strains(skip: Int!, take: Int!): [Strain!]
   }
 `;
 
 const resolvers = {
   Query: {
-    strains: async (_, __, { dataSources }) => {
-      return dataSources.leaflyAPI.getStrains();
+    strains: async (_, { skip, take }, { dataSources }) => {
+      return dataSources.leaflyAPI.getStrains(skip, take);
     },
   },
 };
