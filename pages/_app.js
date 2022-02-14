@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import { useApollo } from "../lib/apolloClient";
-import { ApolloProvider, useApolloClient } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
   require("../mocks");
