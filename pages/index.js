@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={`flex justify-center items-center h-screen`}>
+      <main className={`flex h-screen items-center justify-center`}>
         <h1 className={`text-4xl`}>
           This is a{" "}
           <a
