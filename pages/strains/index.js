@@ -1,26 +1,25 @@
-import { useState } from "react";
+import List, {
+  ALL_STRAINS_QUERY,
+  allStrainsQueryVars,
+} from "../../components/List";
+import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 
-export default function Strains() {
-  const [strains, setStrains] = useState(null);
+const StrainsIndex = () => (
+  <>
+    <List />
+  </>
+);
 
-  const handleGetStrains = () => {
-    fetch("/api/strains")
-      .then(res => res.json())
-      .then(setStrains);
-  };
+export async function getServerSideProps() {
+  const apolloClient = initializeApollo();
 
-  return (
-    <>
-      <button onClick={handleGetStrains}>Load Strains</button>
-      {strains && (
-        <ul>
-          {strains.map(strain => (
-            <li key={strain.id}>
-              <h3>{strain.name}</h3>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
-  );
+  await apolloClient.query({
+    query: ALL_STRAINS_QUERY,
+    variables: allStrainsQueryVars,
+  });
+
+  return addApolloState(apolloClient, {
+    props: {},
+  });
 }
+export default StrainsIndex;
