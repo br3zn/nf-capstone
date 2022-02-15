@@ -6,6 +6,10 @@ export const ALL_STRAINS_QUERY = gql`
     strains(skip: $skip, take: $take) {
       id
       name
+      #      terpTop
+      #      thc
+      #      cbd
+      #      flowerSvg
     }
   }
 `;
@@ -43,9 +47,9 @@ export default function List() {
         <ListItem
           key={listItem.id}
           strainName={listItem.name}
-          topTerp={null}
-          thcLevel={null}
-          cbdLevel={null}
+          topTerp={listItem.terpTop}
+          thcLevel={listItem.thc}
+          cbdLevel={listItem.cbd}
         />
       ))}
       <button onClick={() => loadMoreStrains()} disabled={loadingMoreStrains}>

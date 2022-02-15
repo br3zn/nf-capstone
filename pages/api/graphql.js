@@ -1,42 +1,8 @@
-import { ApolloServer, gql } from "apollo-server-micro";
-import { RESTDataSource } from "apollo-datasource-rest";
-
-class LeaflyAPI extends RESTDataSource {
-  constructor() {
-    super();
-    this.baseURL = "https://consumer-api.leafly.com/api/";
-  }
-
-  async getStrains(skip = 0, take = 2) {
-    const { hits } = await this.get("strain_playlists/v2", {
-      // Query parameters
-      skip: skip,
-      take: take,
-    });
-    return hits.strain;
-  }
-}
-const typeDefs = gql`
-  type Strain {
-    id: ID!
-    name: String!
-    phenotype: String
-    slug: String
-    flowerImageSvg: String
-    shortDescriptionPlain: String
-  }
-  type Query {
-    strains(skip: Int!, take: Int!): [Strain!]
-  }
-`;
-
-const resolvers = {
-  Query: {
-    strains: async (_, { skip, take }, { dataSources }) => {
-      return dataSources.leaflyAPI.getStrains(skip, take);
-    },
-  },
-};
+import { ApolloServer } from "apollo-server-micro";
+import typeDefs from "../../src/schemas";
+import resolvers from "../../src/resolvers";
+import LeaflyAPI from "../../src/datasources/leafly";
+import NextCors from "nextjs-cors";
 
 const apolloServer = new ApolloServer({
   typeDefs,
@@ -61,6 +27,11 @@ export default async function handler(req, res) {
     "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Methods, Access-Control-Allow-Origin, Access-Control-Allow-Credentials, Access-Control-Allow-Headers"
   );
   res.setHeader("Access-Control-Allow-Methods", "GET");
+  await NextCors(req, res, {
+    methods: ["GET"],
+    origin: "*",
+    optionsSuccessStatus: 200,
+  });
   if (req.method === "OPTIONS") {
     res.end();
     return false;
