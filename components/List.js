@@ -6,10 +6,10 @@ export const ALL_STRAINS_QUERY = gql`
     strains(skip: $skip, take: $take) {
       id
       name
-      #      terpTop
-      #      thc
-      #      cbd
-      #      flowerSvg
+      terpTop
+      thc
+      cbd
+      flowerSvg
     }
   }
 `;
@@ -42,7 +42,7 @@ export default function List() {
   const { strains } = data;
 
   return (
-    <div className={`flex h-auto w-screen flex-col gap-6`}>
+    <div className={`flex h-auto w-screen flex-col divide-y`}>
       {strains.map(listItem => (
         <ListItem
           key={listItem.id}
@@ -52,7 +52,11 @@ export default function List() {
           cbdLevel={listItem.cbd}
         />
       ))}
-      <button onClick={() => loadMoreStrains()} disabled={loadingMoreStrains}>
+      <button
+        className={`h-12 w-full bg-slate-200 font-medium`}
+        onClick={() => loadMoreStrains()}
+        disabled={loadingMoreStrains}
+      >
         {loadingMoreStrains ? "Loading..." : "Show More"}
       </button>
     </div>
