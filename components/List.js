@@ -6,10 +6,10 @@ export const ALL_STRAINS_QUERY = gql`
     strains(skip: $skip, take: $take) {
       id
       name
-      #      terpTop
-      #      thc
-      #      cbd
-      #      flowerSvg
+      terpTop
+      thc
+      cbd
+      flowerSvg
     }
   }
 `;
