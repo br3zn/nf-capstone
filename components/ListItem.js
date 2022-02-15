@@ -9,7 +9,7 @@ export default function ListItem(props) {
         {props.strainName}
       </h1>
       <ul
-        className={`flex w-full items-center justify-between px-8 text-lg text-gray-600`}
+        className={`flex w-full max-w-md items-center justify-between px-8 text-lg text-gray-600`}
       >
         <li>{props.thcLevel && `${props.thcLevel}`}%</li>
         <li className={`capitalize`}>{props.topTerp && `${props.topTerp}`}</li>
