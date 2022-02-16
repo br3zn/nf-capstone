@@ -1,10 +1,6 @@
-import { useRouter } from "next/router";
-
-export default function Heading({ size }) {
-  const router = useRouter();
-  const currentPath = router.pathname;
-  const headingText = () => {
-    if (currentPath === "/strains") {
+export default function Heading({ size, path }) {
+  const headingContent = () => {
+    if (path === "/strains") {
       return {
         viewBox: "0 0 131 52",
         svg: (
@@ -21,7 +17,7 @@ export default function Heading({ size }) {
     }
   };
 
-  const { viewBox, svg } = headingText();
+  const { viewBox, svg } = headingContent();
 
   let height;
   switch (size) {
