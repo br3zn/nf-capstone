@@ -16,9 +16,9 @@ export default function Home() {
       <main
         className={`flex min-h-screen w-screen flex-col items-center justify-center gap-6 bg-slate-900`}
       >
-        <Logo />
+        <Logo size={"lg"} />
         <h1 className={`text-center text-4xl text-gray-200`}>
-          Under active development.{" "}
+          Under development.{" "}
         </h1>
         <a
           className={`text-blue-500 hover:underline`}
