@@ -1,8 +1,8 @@
-export default function Logo({ size }) {
+export default function LogoIcon({ size }) {
   let height;
   switch (size) {
     case "sm":
-      height = "h-16";
+      height = "h-12";
       break;
     case "md":
       height = "h-32";
