@@ -42,7 +42,9 @@ export default function List() {
   const { strains } = data;
 
   return (
-    <div className={`flex h-auto w-screen flex-col divide-y`}>
+    <div
+      className={`flex h-auto w-screen flex-col divide-y dark:divide-slate-600`}
+    >
       {strains.map(listItem => (
         <ListItem
           key={listItem.id}
@@ -50,10 +52,11 @@ export default function List() {
           topTerp={listItem.terpTop}
           thcLevel={listItem.thc}
           cbdLevel={listItem.cbd}
+          flowerSvg={listItem.flowerSvg}
         />
       ))}
       <button
-        className={`h-12 w-full bg-slate-200 font-medium`}
+        className={`h-12 w-full bg-slate-200 font-medium dark:bg-slate-800 dark:text-gray-400`}
         onClick={() => loadMoreStrains()}
         disabled={loadingMoreStrains}
       >

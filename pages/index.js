@@ -12,16 +12,18 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <LogoIcon size={"lg"} />
-      <h2 className={`text-center text-4xl text-gray-800 dark:text-gray-200`}>
-        Under development.{" "}
-      </h2>
-      <a
-        className={`text-blue-500 hover:underline`}
-        href="https://github.com/br3zn/nf-capstone"
-      >
-        GitHub repository
-      </a>
+      <div className={`flex flex-col items-center justify-center gap-6 pt-8`}>
+        <LogoIcon size={"lg"} />
+        <h2 className={`text-center text-4xl text-gray-800 dark:text-gray-200`}>
+          Under development.{" "}
+        </h2>
+        <a
+          className={`text-blue-500 hover:underline`}
+          href="https://github.com/br3zn/nf-capstone"
+        >
+          GitHub repository
+        </a>
+      </div>
     </>
   );
 }
