@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 export default function Heading({ size }) {
   const router = useRouter();
   const currentPath = router.pathname;
-  const heading = () => {
+  const headingText = () => {
     if (currentPath === "/strains") {
       return {
         viewBox: "0 0 131 52",
@@ -21,6 +21,8 @@ export default function Heading({ size }) {
     }
   };
 
+  const { viewBox, svg } = headingText();
+
   let height;
   switch (size) {
     case "sm":
@@ -37,10 +39,10 @@ export default function Heading({ size }) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMinYMin"
-      viewBox={heading().viewBox}
+      viewBox={viewBox}
       className={`${size ? height : "h-16"} dark:fill-white`}
     >
-      {heading().svg}
+      {svg}
     </svg>
   );
 }
