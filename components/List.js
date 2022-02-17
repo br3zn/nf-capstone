@@ -3,12 +3,15 @@ import ListItem from "./ListItem";
 
 export const ALL_STRAINS_QUERY = gql`
   query GetAllStrains($skip: Int!, $take: Int!) {
-    strains(skip: $skip, take: $take) {
-      id
+    allStrains(skip: $skip, take: $take) {
+      leaflyId
       name
       terpTop
       thc
-      cbd
+      terps {
+        name
+        score
+      }
       flowerSvg
     }
   }
@@ -45,14 +48,14 @@ export default function List() {
     <div
       className={`flex h-auto w-screen flex-col divide-y dark:divide-slate-600`}
     >
-      {strains.map(listItem => (
+      {strains.map(strain => (
         <ListItem
-          key={listItem.id}
-          strainName={listItem.name}
-          topTerp={listItem.terpTop}
-          thcLevel={listItem.thc}
-          cbdLevel={listItem.cbd}
-          flowerSvg={listItem.flowerSvg}
+          key={strain.leaflyId}
+          strainName={strain.name}
+          topTerp={strain.terpTop}
+          thcLevel={strain.thc}
+          terps={strain.terps}
+          flowerSvg={strain.flowerSvg}
         />
       ))}
       <button
