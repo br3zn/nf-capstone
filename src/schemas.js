@@ -2,20 +2,25 @@ import { gql } from "apollo-server-micro";
 
 const typeDefs = gql`
   type Strain {
-    leaflyId: ID!
+    id: ID!
     name: String!
-    terpTop: String!
+    terpTop: String
     thc: Int
     cbd: Int
     flowerSvg: String
-    terps: [Terpene]
+    terpenes: [Terpene]
+    cannabinoids: [Cannabinoid]
   }
   type Terpene {
     name: String
     score: Float
   }
+  type Cannabinoid {
+    name: String
+    order: Int
+  }
   type Query {
-    allStrains(skip: Int!, take: Int!): [Strain]!
+    strains(skip: Int!, take: Int!): [Strain]!
   }
 `;
 module.exports = typeDefs;
