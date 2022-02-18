@@ -2,14 +2,25 @@ import { ApolloServer } from "apollo-server-micro";
 import typeDefs from "../../src/schemas";
 import resolvers from "../../src/resolvers";
 import LeaflyAPI from "../../src/datasources/leafly";
+import BubatzDB from "../../src/datasources/bubatzdb";
 import NextCors from "nextjs-cors";
 
+const knexConfig = {
+  client: "pg",
+  connection: {
+    host: process.env.BUBATZDB_SERVER,
+    user: process.env.BUBATZDB_USER,
+    database: process.env.BUBATZDB_DB,
+    password: process.env.BUBATZDB_PW,
+  },
+};
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
   dataSources: () => {
     return {
       leaflyAPI: new LeaflyAPI(),
+      bubatzDB: new BubatzDB(knexConfig),
     };
   },
 });
