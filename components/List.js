@@ -34,7 +34,7 @@ export default function List() {
   const loadMoreStrains = () => {
     fetchMore({
       variables: {
-        skip: strains.length,
+        skip: allStrains.length,
       },
     });
   };
@@ -42,13 +42,13 @@ export default function List() {
   if (error) return <h3>Error</h3>;
   if (loading && !loadingMoreStrains) return <h3>Loading</h3>;
 
-  const { strains } = data;
+  const { allStrains } = data;
 
   return (
     <div
       className={`flex h-auto w-screen flex-col divide-y dark:divide-slate-600`}
     >
-      {strains.map(strain => (
+      {allStrains.map(strain => (
         <ListItem
           key={strain.leaflyId}
           strainName={strain.name}
