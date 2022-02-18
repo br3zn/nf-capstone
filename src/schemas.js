@@ -12,7 +12,6 @@ const typeDefs = gql`
   type Terpene {
     name: String
     score: Float
-    description: String
   }
   type TerpInfo {
     id: Int!
@@ -21,7 +20,8 @@ const typeDefs = gql`
   }
   type Query {
     allStrains(skip: Int!, take: Int!): [Strain]!
-    getTerps: [TerpInfo]
+    getAllTerps: [TerpInfo]
+    getTerpById(id: Int!): [TerpInfo]
   }
 `;
 module.exports = typeDefs;
