@@ -8,7 +8,7 @@ export const ALL_STRAINS_QUERY = gql`
       name
       terpTop
       thc
-      terps: terps {
+      terps {
         name
         score
       }
