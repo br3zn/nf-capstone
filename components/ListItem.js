@@ -34,10 +34,6 @@ export default function ListItem(props) {
           <li className={`capitalize`}>
             {props.topTerp && `${props.topTerp}`}
           </li>
-          <li>
-            <span className={`text-sm text-gray-500`}>CBD:</span>{" "}
-            {props.cbdLevel === 0 ? "-" : `${props.cbdLevel}%`}
-          </li>
         </ul>
       </div>
     </div>
