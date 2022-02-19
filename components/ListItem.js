@@ -32,6 +32,9 @@ export default function ListItem(props) {
             {props.thcLevel === 0 ? "-" : `${props.thcLevel}%`}
           </li>
           <li className={`capitalize`}>
+            <span className={`text-center text-sm text-gray-500`}>
+              Top Terp:
+            </span>{" "}
             {props.topTerp && `${props.topTerp}`}
           </li>
         </ul>
