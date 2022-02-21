@@ -2,7 +2,7 @@ import { gql, useQuery, NetworkStatus } from "@apollo/client";
 import Image from "next/image";
 import Modal from "./modal";
 import { useState } from "react";
-import { orderBy } from "lodash";
+import { floor, orderBy } from "lodash";
 import { isArray } from "lodash/lang";
 
 export const ALL_STRAINS_QUERY = gql`
@@ -101,7 +101,6 @@ export default function List() {
   if (error) return <h3>Error</h3>;
   if (loading && !loadingMoreStrains) return <h3>Loading</h3>;
   const { allStrains } = data;
-  const { getAllTerps } = data;
   return (
     <div
       className={`flex h-auto w-screen flex-col divide-y dark:divide-slate-600`}
@@ -120,14 +119,31 @@ export default function List() {
           />
         </button>
       ))}
-      <Modal
-        isVisible={isVisible}
-        handleClose={() => hideModal()}
-        title={`Terpene List`}
-        contentList={modalContent[0]}
-        contentText={`These terpenes are found in ${modalContent[1]}`}
-        terpList={getAllTerps}
-      />
+      {isVisible && (
+        <Modal handleClose={() => hideModal()}>
+          <h2 className={`text-center text-4xl`}>Terpene List</h2>
+          <div className={`py-4 px-3`}>
+            <p className={`italic text-gray-700`}>
+              These terpenes are found in {modalContent[1]}
+            </p>
+            <ul>
+              {modalContent &&
+                modalContent[0].map(item => (
+                  <li key={item.name} className={`py-2`}>
+                    <details>
+                      <summary className={`cursor-pointer text-lg`}>
+                        {item.name} - {floor(item.score, 3)}
+                      </summary>
+                      <div className="mt-1 mb-2 max-h-48 overflow-scroll text-sm leading-6 text-slate-600">
+                        <p>Desciption</p>
+                      </div>
+                    </details>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </Modal>
+      )}
       <button
         className={`h-12 w-full bg-slate-200 font-medium dark:bg-slate-800 dark:text-gray-400`}
         onClick={() => loadMoreStrains()}
