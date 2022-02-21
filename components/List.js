@@ -78,10 +78,10 @@ export default function List() {
   const [isVisible, setIsVisible] = useState(false);
   const [modalContent, setModalContent] = useState([]);
 
-  const loadModal = (contentList, contentText) => {
-    if (isArray(contentList)) {
-      const orderedContent = orderBy(contentList, "score", "desc");
-      setModalContent([orderedContent, contentText]);
+  const loadModal = (terpList, strainName) => {
+    if (isArray(terpList)) {
+      const orderedContent = orderBy(terpList, "score", "desc");
+      setModalContent([orderedContent, strainName]);
       setIsVisible(true);
     } else {
       console.warn("Modal content has to be an array!");
@@ -130,14 +130,7 @@ export default function List() {
               {modalContent &&
                 modalContent[0].map(item => (
                   <li key={item.name} className={`py-2`}>
-                    <details>
-                      <summary className={`cursor-pointer text-lg`}>
-                        {item.name} - {floor(item.score, 3)}
-                      </summary>
-                      <div className="mt-1 mb-2 max-h-48 overflow-scroll text-sm leading-6 text-slate-600">
-                        <p>Desciption</p>
-                      </div>
-                    </details>
+                    {item.name} - {floor(item.score, 3)}
                   </li>
                 ))}
             </ul>
