@@ -102,9 +102,7 @@ export default function List() {
   if (loading && !loadingMoreStrains) return <h3>Loading</h3>;
   const { allStrains } = data;
   return (
-    <div
-      className={`flex h-auto w-screen flex-col divide-y dark:divide-slate-600`}
-    >
+    <div className={`flex h-auto flex-col divide-y dark:divide-slate-600`}>
       {allStrains.map(strain => (
         <button
           className={``}
