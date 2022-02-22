@@ -14,7 +14,6 @@ const StrainsIndex = () => (
         content="Bubatz is a educational app about cannabis and everything around it."
       />
     </Head>
-
     <List />
   </>
 );
