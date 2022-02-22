@@ -3,6 +3,9 @@ module.exports = {
     allStrains: async (_, { skip, take }, { dataSources }) => {
       return dataSources.leaflyAPI.getAllStrains(skip, take);
     },
+    getStrainByName: async (_, { name }, { dataSources }) => {
+      return dataSources.leaflyAPI.getStrainByName(name);
+    },
     getAllTerps: async (_, __, { dataSources }) => {
       return dataSources.bubatzDB.getAllTerps();
     },
