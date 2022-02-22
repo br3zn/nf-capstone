@@ -46,9 +46,9 @@ function ListItem(strain) {
         />
       </div>
       <div className={`flex w-64 flex-col items-start justify-around gap-4`}>
-        <h1 className={`text-3xl font-medium text-gray-800 dark:text-gray-200`}>
+        <h2 className={`text-3xl font-medium text-gray-800 dark:text-gray-200`}>
           {strain.strainName}
-        </h1>
+        </h2>
         <ul
           className={`flex flex-col items-start justify-between text-lg text-gray-600 dark:text-gray-400`}
         >
