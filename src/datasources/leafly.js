@@ -33,9 +33,12 @@ class LeaflyAPI extends RESTDataSource {
       terpTop: strain.strainTopTerp || "no data",
       thc: strain.thc || 0,
       terps: map(strain.terps) || [],
+      energizeScore: strain.energizeScore || 0,
+      description: strain.descriptionPlain,
     };
   }
 
+  // fetch all strains with relevant data from v2 api
   async getAllStrains(skip = 0, take = 10) {
     const { hits } = await this.get(
       `strain_playlists/v2?${withDataFilterQuery}`,
@@ -48,6 +51,19 @@ class LeaflyAPI extends RESTDataSource {
     return Array.isArray(res)
       ? res.map(strain => this.strainReducer(strain))
       : [];
+  }
+
+  // fetch strain by name from v1 api
+  async getStrainByName(name) {
+    const { hits } = await this.get(
+      `search/v1?collapse=dispensary_id&filter[type]=menu_item&filter[product_category]=Flower&filter[unit]=g&lat=39.3486&lon=3.125&filter[all_strains]=true&skip=0&take=3`,
+      {
+        "filter[strain_name]": name,
+      }
+    );
+    const { menuItem } = hits;
+    const { strain } = menuItem[0]; // for now, only the first object in the response gets processed
+    return this.strainReducer(strain);
   }
 }
 

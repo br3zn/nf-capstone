@@ -8,6 +8,8 @@ const typeDefs = gql`
     thc: Int
     flowerSvg: String
     terps: [Terpene]
+    energizeScore: Float
+    description: String
   }
   type Terpene {
     name: String
@@ -20,6 +22,7 @@ const typeDefs = gql`
   }
   type Query {
     allStrains(skip: Int!, take: Int!): [Strain]!
+    getStrainByName(name: String!): Strain
     getAllTerps: [TerpInfo]
     getTerpById(id: Int!): [TerpInfo]
   }
