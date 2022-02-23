@@ -4,6 +4,7 @@ import Modal from "./modal";
 import { useState } from "react";
 import { floor, orderBy } from "lodash";
 import { isArray } from "lodash/lang";
+import TerpScoreChart from "./PolarChart";
 
 export const ALL_STRAINS_QUERY = gql`
   query GetAllStrains($skip: Int!, $take: Int!) {
@@ -133,6 +134,7 @@ export default function List() {
                 ))}
             </ul>
           </div>
+          <TerpScoreChart {...modalContent[0]} />
         </Modal>
       )}
       <button
