@@ -81,7 +81,7 @@ export default function List() {
 
   const loadModal = (terpList, strainName) => {
     if (isArray(terpList)) {
-      const orderedContent = orderBy(terpList, "score", "desc");
+      const orderedContent = orderBy(terpList, "name", "asc");
       setModalContent([orderedContent, strainName]);
       setIsVisible(true);
     } else {
