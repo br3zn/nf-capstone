@@ -22,7 +22,7 @@ const typeDefs = gql`
   }
   type Query {
     allStrains(skip: Int!, take: Int!): [Strain]!
-    getStrainByName(name: String!): Strain
+    getStrainByName(name: String!): [Strain]
     getAllTerps: [TerpInfo]
     getTerpById(id: Int!): [TerpInfo]
   }
