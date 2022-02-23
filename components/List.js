@@ -120,10 +120,12 @@ export default function List() {
       ))}
       {isVisible && (
         <Modal handleClose={() => hideModal()}>
-          <h2 className={`text-center text-4xl`}>Terpene List</h2>
+          <h2 className={`text-center text-3xl font-bold tracking-wider`}>
+            Terpene List
+          </h2>
           <div className={`py-4 px-3`}>
             <p className={`italic text-gray-700`}>
-              These terpenes are found in {modalContent[1]}
+              These terpenes are found in {modalContent[1]}:
             </p>
             {modalContent && <TerpScoreChart {...modalContent[0]} />}
           </div>
