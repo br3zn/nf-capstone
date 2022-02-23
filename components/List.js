@@ -2,7 +2,7 @@ import { gql, useQuery, NetworkStatus } from "@apollo/client";
 import Image from "next/image";
 import Modal from "./modal";
 import { useState } from "react";
-import { floor, orderBy } from "lodash";
+import { orderBy } from "lodash";
 import { isArray } from "lodash/lang";
 import TerpScoreChart from "./PolarChart";
 
@@ -125,16 +125,8 @@ export default function List() {
             <p className={`italic text-gray-700`}>
               These terpenes are found in {modalContent[1]}
             </p>
-            <ul>
-              {modalContent &&
-                modalContent[0].map(item => (
-                  <li key={item.name} className={`py-2`}>
-                    {item.name} - {floor(item.score, 3)}
-                  </li>
-                ))}
-            </ul>
+            {modalContent && <TerpScoreChart {...modalContent[0]} />}
           </div>
-          <TerpScoreChart {...modalContent[0]} />
         </Modal>
       )}
       <button
