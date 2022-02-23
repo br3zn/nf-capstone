@@ -62,8 +62,8 @@ class LeaflyAPI extends RESTDataSource {
       }
     );
     const { menuItem } = hits;
-    const { strain } = menuItem[0]; // for now, only the first object in the response gets processed
-    return this.strainReducer(strain);
+    const res = menuItem.filter(strain => this.strainReducer(strain));
+    return res;
   }
 }
 
