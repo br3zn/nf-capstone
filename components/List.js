@@ -2,8 +2,9 @@ import { gql, useQuery, NetworkStatus } from "@apollo/client";
 import Image from "next/image";
 import Modal from "./modal";
 import { useState } from "react";
-import { floor, orderBy } from "lodash";
+import { orderBy } from "lodash";
 import { isArray } from "lodash/lang";
+import TerpScoreChart from "./PolarChart";
 
 export const ALL_STRAINS_QUERY = gql`
   query GetAllStrains($skip: Int!, $take: Int!) {
@@ -119,19 +120,14 @@ export default function List() {
       ))}
       {isVisible && (
         <Modal handleClose={() => hideModal()}>
-          <h2 className={`text-center text-4xl`}>Terpene List</h2>
+          <h2 className={`text-center text-3xl font-bold tracking-wider`}>
+            Terpene List
+          </h2>
           <div className={`py-4 px-3`}>
             <p className={`italic text-gray-700`}>
-              These terpenes are found in {modalContent[1]}
+              These terpenes are found in {modalContent[1]}:
             </p>
-            <ul>
-              {modalContent &&
-                modalContent[0].map(item => (
-                  <li key={item.name} className={`py-2`}>
-                    {item.name} - {floor(item.score, 3)}
-                  </li>
-                ))}
-            </ul>
+            {modalContent && <TerpScoreChart {...modalContent[0]} />}
           </div>
         </Modal>
       )}
