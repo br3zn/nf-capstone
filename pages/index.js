@@ -36,11 +36,11 @@ export default function Home() {
           <p className={`max-w-md text-right`}>
             You can get an overview of{" "}
             <Link href={`/strains`}>
-              <a className={`text-slate-100`}>strains</a>
+              <a className={`text-orange-700 dark:text-slate-100`}>strains</a>
             </Link>{" "}
             or read more about the different{" "}
             <Link href={`/terps`}>
-              <a className={`text-slate-100`}>terpenes</a>
+              <a className={`text-orange-700 dark:text-slate-100`}>terpenes</a>
             </Link>{" "}
             included in cannabis.
           </p>
