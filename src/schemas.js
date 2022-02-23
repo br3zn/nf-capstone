@@ -4,7 +4,7 @@ const typeDefs = gql`
   type Strain {
     leaflyId: ID!
     name: String!
-    terpTop: String!
+    terpTop: String
     thc: Int
     flowerSvg: String
     terps: [Terpene]
