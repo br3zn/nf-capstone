@@ -7,7 +7,7 @@ export default function HeaderBar() {
   const router = useRouter();
 
   return (
-    <div className="sticky top-0 left-0 z-30 flex min-h-fit w-screen items-center justify-center gap-4 bg-white/80 py-4 backdrop-blur dark:bg-black/60">
+    <div className="sticky top-0 left-0 z-30 flex min-h-fit w-full items-center justify-center gap-4 bg-white/80 py-4 backdrop-blur dark:bg-black/60">
       {router.pathname !== "/" && (
         <Link href={"/"} passHref>
           <button className={`absolute top-1/3 left-8`}>
