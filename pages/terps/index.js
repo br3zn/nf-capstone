@@ -30,7 +30,11 @@ export default function TerpsPage() {
       <div
         className={`ml-8 mt-4 flex flex-col items-center justify-center gap-14 dark:text-slate-400`}
       >
-        <h2>Terpene Information</h2>
+        <h2
+          className={`text-4xl font-black uppercase tracking-wide text-gray-800 dark:text-slate-100`}
+        >
+          Terpene Information
+        </h2>
         {getAllTerps.map(terp => (
           <div key={terp.id} className={`w-80 md:w-96`}>
             <details className={``}>

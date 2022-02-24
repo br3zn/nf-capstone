@@ -4,6 +4,7 @@ import List, {
 } from "../../components/List";
 import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 import Head from "next/head";
+import IconBubble from "../../components/IconBubble";
 
 const StrainsIndex = () => (
   <>
@@ -15,6 +16,7 @@ const StrainsIndex = () => (
       />
     </Head>
     <List />
+    <IconBubble />
   </>
 );
 
