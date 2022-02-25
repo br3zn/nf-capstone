@@ -19,16 +19,17 @@ The link in the description is the "production build", only a production ready v
 
 ## Tech
 
-I used Next.js as my framework and Apollo GraphQL to fetch data. Apollo server runs in a next/api route and is connected to two data sources. The first is a REST api which I deconstructed for educational purposes. The second is a postgreSQL database where I store information about terpenes.
+I used Next.js as my framework and Apollo GraphQL to fetch data.
+
+Apollo server runs in a next/api route and is connected to two data sources. The first is a REST api which I deconstructed for educational purposes. The second is a postgreSQL database where I store information about terpenes.
+
+The available graphql queries can be found in `src/schemas.js`.
 
 ## Stack
 
 - next.js
 - tailwindCSS
-- postCSS
-- eslint
-- prettier
+- apollo/server
 - apollo/client
-- jest
-- cypress
-- msw
+- REST API
+- postgreSQL
