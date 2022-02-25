@@ -14,8 +14,25 @@ const ALL_TERPS = gql`
 export default function TerpsPage() {
   const { loading, error, data } = useQuery(ALL_TERPS);
 
-  if (error) return <h3>Error: {error}</h3>;
-  if (loading) return <h3>Loading</h3>;
+  if (error)
+    return (
+      <h3 className={`w-full text-center`}>
+        <span
+          className={`text-4xl font-black uppercase tracking-wider dark:text-slate-100`}
+        >
+          Error:
+        </span>{" "}
+        {error}
+      </h3>
+    );
+  if (loading)
+    return (
+      <h3
+        className={`mt-4 w-full text-center text-4xl font-black uppercase tracking-wider dark:text-slate-100`}
+      >
+        Loading Terps
+      </h3>
+    );
   const { getAllTerps } = data;
   return (
     <>
@@ -28,7 +45,7 @@ export default function TerpsPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div
-        className={`ml-8 mt-4 flex flex-col items-center justify-center gap-14 dark:text-slate-400`}
+        className={`my-4 ml-8 flex flex-col items-center justify-center gap-14 dark:text-slate-400`}
       >
         <h2
           className={`text-4xl font-black uppercase tracking-wide text-gray-800 dark:text-slate-100`}
