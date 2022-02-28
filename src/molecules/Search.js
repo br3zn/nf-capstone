@@ -5,22 +5,21 @@ import { useStore } from "../../lib/store";
 import shallow from "zustand/shallow";
 
 const useSearch = () => {
-  const { searchString, update, reset } = useStore(
+  const { searchString, update } = useStore(
     store => ({
       searchString: store.searchString,
       update: store.update,
-      reset: store.reset,
     }),
     shallow
   );
 
-  return { searchString, update, reset };
+  return { searchString, update };
 };
 
 // Search component
 export default function Search() {
   const [inputIsVisible, setInputIsVisible] = useState(false); // use State hook to set the initial visibility of the search input
-  const { update, reset } = useSearch();
+  const { update } = useSearch();
 
   // handler function for the inputIsVisible toggle button
   const handleClick = () => {
@@ -28,7 +27,7 @@ export default function Search() {
   };
   return (
     <>
-      <button onClick={handleClick}>
+      <button className={`absolute`} onClick={handleClick}>
         <IconBubble state={inputIsVisible} />
       </button>
       {inputIsVisible && (
