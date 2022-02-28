@@ -64,6 +64,7 @@ export default function List({ listArr, children }) {
   const hideModal = () => {
     setIsVisible(false);
   };
+
   return (
     <div className={`flex h-auto flex-col divide-y dark:divide-slate-600`}>
       {listContent &&
