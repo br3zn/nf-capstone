@@ -1,35 +1,9 @@
-import { gql, useQuery, NetworkStatus } from "@apollo/client";
 import Image from "next/image";
 import Modal from "./modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { orderBy } from "lodash";
 import { isArray } from "lodash/lang";
 import TerpScoreChart from "./PolarChart";
-
-export const ALL_STRAINS_QUERY = gql`
-  query GetAllStrains($skip: Int!, $take: Int!) {
-    allStrains(skip: $skip, take: $take) {
-      leaflyId
-      name
-      terpTop
-      thc
-      terps {
-        name
-        score
-      }
-      flowerSvg
-    }
-    getAllTerps {
-      id
-      name
-      description
-    }
-  }
-`;
-export const allStrainsQueryVars = {
-  skip: 0,
-  take: 10,
-};
 
 function ListItem(strain) {
   return (
@@ -46,7 +20,9 @@ function ListItem(strain) {
           objectFit="contain"
         />
       </div>
-      <div className={`flex w-64 flex-col items-start justify-around gap-4`}>
+      <div
+        className={`flex w-64 min-w-fit flex-col items-start justify-around gap-4`}
+      >
         <h2 className={`text-3xl font-medium text-gray-800 dark:text-gray-200`}>
           {strain.strainName}
         </h2>
@@ -67,17 +43,14 @@ function ListItem(strain) {
   );
 }
 
-export default function List() {
-  const { loading, error, data, fetchMore, networkStatus } = useQuery(
-    ALL_STRAINS_QUERY,
-    {
-      variables: allStrainsQueryVars,
-      notifyOnNetworkStatusChange: true,
-    }
-  );
-  const loadingMoreStrains = networkStatus === NetworkStatus.fetchMore;
+export default function List({ listArr, children }) {
+  const [listContent, setListContent] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const [modalContent, setModalContent] = useState([]);
+
+  useEffect(() => {
+    setListContent(listArr);
+  }, [listArr]);
 
   const loadModal = (terpList, strainName) => {
     if (isArray(terpList)) {
@@ -91,33 +64,24 @@ export default function List() {
   const hideModal = () => {
     setIsVisible(false);
   };
-  const loadMoreStrains = () => {
-    fetchMore({
-      variables: {
-        skip: allStrains.length,
-      },
-    });
-  };
 
-  if (error) return <h3>Error</h3>;
-  if (loading && !loadingMoreStrains) return <h3>Loading</h3>;
-  const { allStrains } = data;
   return (
     <div className={`flex h-auto flex-col divide-y dark:divide-slate-600`}>
-      {allStrains.map(strain => (
-        <button
-          className={``}
-          key={strain.leaflyId}
-          onClick={() => loadModal(strain.terps, strain.name)}
-        >
-          <ListItem
-            strainName={strain.name}
-            topTerp={strain.terpTop}
-            thcLevel={strain.thc}
-            flowerSvg={strain.flowerSvg}
-          />
-        </button>
-      ))}
+      {listContent &&
+        listContent.map(strain => (
+          <button
+            className={``}
+            key={strain.leaflyId}
+            onClick={() => loadModal(strain.terps, strain.name)}
+          >
+            <ListItem
+              strainName={strain.name}
+              topTerp={strain.terpTop}
+              thcLevel={strain.thc}
+              flowerSvg={strain.flowerSvg}
+            />
+          </button>
+        ))}
       {isVisible && (
         <Modal handleClose={() => hideModal()}>
           <h2 className={`text-center text-3xl font-bold tracking-wider`}>
@@ -131,13 +95,7 @@ export default function List() {
           </div>
         </Modal>
       )}
-      <button
-        className={`h-12 w-full bg-slate-200 font-medium dark:bg-slate-800 dark:text-gray-400`}
-        onClick={() => loadMoreStrains()}
-        disabled={loadingMoreStrains}
-      >
-        {loadingMoreStrains ? "Loading..." : "Show More"}
-      </button>
+      {children}
     </div>
   );
 }
