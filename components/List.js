@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Modal from "./modal";
+import Modal from "./Modal";
 import { useEffect, useState } from "react";
 import { orderBy } from "lodash";
 import { isArray } from "lodash/lang";
