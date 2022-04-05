@@ -3,7 +3,10 @@ import { useState } from "react";
 export function useSessionStorage(key, initialValue) {
   const [storedValue, setStoredValue] = useState(() => {
     try {
-      const item = window.sessionStorage.getItem(key);
+      const item =
+        typeof window !== "undefined"
+          ? window.sessionStorage.getItem(key)
+          : null;
       return item ? JSON.parse(item) : initialValue;
     } catch (error) {
       console.log(error);
