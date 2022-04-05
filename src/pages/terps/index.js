@@ -1,6 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import Head from "next/head";
-import { Accordion, Skeleton } from "@mantine/core";
+import { Accordion, Group, Skeleton } from "@mantine/core";
 
 const ALL_TERPS = gql`
   query GetAllTerps {
@@ -11,6 +11,10 @@ const ALL_TERPS = gql`
     }
   }
 `;
+
+function TerpAccordionLabel({ label, description, icon }) {
+  return <Group noWrap></Group>;
+}
 
 function Terps() {
   const { loading, error, data } = useQuery(ALL_TERPS);

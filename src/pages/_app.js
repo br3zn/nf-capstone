@@ -1,12 +1,12 @@
-import "../styles/globals.css";
-import Layout from "../components/layout";
-import { useApollo } from "../lib/apolloClient";
+import "@styles/globals.css";
+import Layout from "@components/layout";
+import { useApollo } from "@lib/apolloClient";
 import { ApolloProvider } from "@apollo/client";
-import { useCreateStore, Provider } from "../lib/store";
+import { useCreateStore, Provider } from "@lib/store";
 import { MantineProvider } from "@mantine/core";
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
-  require("../mocks");
+  require("../../mocks");
 }
 
 function MyApp({ Component, pageProps }) {
