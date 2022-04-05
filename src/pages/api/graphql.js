@@ -1,6 +1,6 @@
 import { ApolloServer } from "apollo-server-micro";
-import typeDefs from "@schemas";
-import resolvers from "@resolvers";
+import typeDefs from "@apollo/schemas";
+import resolvers from "@apollo/resolvers";
 import LeaflyAPI from "@datasources/leafly";
 import BubatzDB from "@datasources/bubatzdb";
 import NextCors from "nextjs-cors";
