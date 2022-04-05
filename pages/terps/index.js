@@ -1,6 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import Head from "next/head";
-import { Accordion } from "@mantine/core";
+import { Accordion, Skeleton } from "@mantine/core";
 
 const ALL_TERPS = gql`
   query GetAllTerps {
@@ -12,29 +12,27 @@ const ALL_TERPS = gql`
   }
 `;
 
-export default function TerpsPage() {
+function Terps() {
   const { loading, error, data } = useQuery(ALL_TERPS);
 
-  if (error)
-    return (
-      <h3 className={`w-full text-center`}>
-        <span
-          className={`text-4xl font-black uppercase tracking-wider dark:text-slate-100`}
-        >
-          Error:
-        </span>{" "}
-        {error}
-      </h3>
-    );
-  if (loading)
-    return (
-      <h3
-        className={`mt-4 w-full text-center text-4xl font-black uppercase tracking-wider dark:text-slate-100`}
-      >
-        Loading Terps
-      </h3>
-    );
-  const { getAllTerps } = data;
+  if (error) return <p>Error :(</p>;
+
+  return (
+    <>
+      {loading && <Skeleton height={320} />}
+      <Accordion className={`w-full`}>
+        {data &&
+          data.getAllTerps.map(terp => (
+            <Accordion.Item key={terp.id} label={terp.name}>
+              {terp.description}
+            </Accordion.Item>
+          ))}
+      </Accordion>
+    </>
+  );
+}
+
+export default function TerpsPage() {
   return (
     <>
       <Head>
@@ -53,13 +51,7 @@ export default function TerpsPage() {
         >
           Terpene Information
         </h2>
-        <Accordion className={`w-full`}>
-          {getAllTerps.map(terp => (
-            <Accordion.Item key={terp.id} label={terp.name}>
-              {terp.description}
-            </Accordion.Item>
-          ))}
-        </Accordion>
+        <Terps />
       </div>
     </>
   );
