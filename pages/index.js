@@ -1,8 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import NavMenu from "../components/NavMenu";
+import { IconInfoCircle } from "@tabler/icons";
+import { Notification } from "@mantine/core";
+import { useState } from "react";
 
 export default function Home() {
+  const [notification, setNotification] = useState(true);
   return (
     <>
       <Head>
@@ -46,6 +50,19 @@ export default function Home() {
           </p>
         </div>
       </div>
+      {notification && (
+        <Notification
+          title="Info"
+          icon={<IconInfoCircle size={30} color="black" />}
+          radius="xs"
+          color="yellow"
+          onClose={() => setNotification(false)}
+          className="fixed bottom-0 right-0 mb-4 mr-4"
+        >
+          This App is only a demo. Visit my{" "}
+          <a href="https://github.com/br3zn">GitHub</a> to get more information.
+        </Notification>
+      )}
     </>
   );
 }
