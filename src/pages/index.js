@@ -9,6 +9,23 @@ export default function Home() {
   const [notification, setNotification] = useSessionStorage("notifications", {
     showDemoInfo: true,
   });
+  const navArr = [
+    {
+      id: 1,
+      url: "strains",
+      label: "Strains",
+    },
+    {
+      id: 2,
+      url: "terps",
+      label: "Terpenes",
+    },
+    {
+      id: 3,
+      url: "profile",
+      label: "Profile",
+    },
+  ];
 
   return (
     <>
@@ -20,7 +37,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavMenu />
+      <NavMenu navArr={navArr} />
       <div
         className={`flex h-full flex-col items-center justify-evenly gap-6 pt-8 dark:text-slate-400`}
       >
