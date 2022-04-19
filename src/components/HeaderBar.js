@@ -8,7 +8,7 @@ export default function HeaderBar() {
 
   return (
     <div className="sticky top-0 left-0 z-30 flex min-h-fit w-full items-center justify-center gap-4 bg-white/80 py-4 backdrop-blur dark:bg-black/60">
-      {router.pathname !== "/" && (
+      {router.pathname !== "/" && ( // Show the back button if we're not on the home page
         <Link href={"/"} passHref>
           <button className={`absolute top-1/3 left-8`}>
             <svg
