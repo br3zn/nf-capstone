@@ -1,23 +1,6 @@
 import Link from "next/link";
 
-export default function NavMenu() {
-  const navArr = [
-    {
-      id: 1,
-      url: "strains",
-      label: "Strains",
-    },
-    {
-      id: 2,
-      url: "terps",
-      label: "Terpenes",
-    },
-    {
-      id: 3,
-      url: "profile",
-      label: "Profile",
-    },
-  ];
+export default function NavMenu({ navArr }) {
   return (
     <>
       <nav

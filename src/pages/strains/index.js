@@ -1,9 +1,9 @@
-import List from "../../components/List";
-import { initializeApollo, addApolloState } from "../../lib/apolloClient";
+import List from "@components/List";
+import { initializeApollo, addApolloState } from "@lib/apolloClient";
 import Head from "next/head";
 import { gql, NetworkStatus, useQuery } from "@apollo/client";
-import Search from "../../src/molecules/Search";
-import { useStore } from "../../lib/store";
+import Search from "@components/molecules/Search";
+import { useStore } from "@lib/store";
 
 export const ALL_STRAINS_QUERY = gql`
   query GetAllStrains($skip: Int!, $take: Int!) {

@@ -1,8 +1,32 @@
 import Head from "next/head";
 import Link from "next/link";
-import NavMenu from "../components/NavMenu";
+import NavMenu from "@/components/NavMenu";
+import { IconInfoCircle } from "@tabler/icons";
+import { Notification } from "@mantine/core";
+import { useSessionStorage } from "@hooks/useSessionStorage";
 
 export default function Home() {
+  const [notification, setNotification] = useSessionStorage("notifications", {
+    showDemoInfo: true,
+  });
+  const navArr = [
+    {
+      id: 1,
+      url: "strains",
+      label: "Strains",
+    },
+    {
+      id: 2,
+      url: "terps",
+      label: "Terpenes",
+    },
+    {
+      id: 3,
+      url: "profile",
+      label: "Profile",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -13,7 +37,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavMenu />
+      <NavMenu navArr={navArr} />
       <div
         className={`flex h-full flex-col items-center justify-evenly gap-6 pt-8 dark:text-slate-400`}
       >
@@ -46,6 +70,19 @@ export default function Home() {
           </p>
         </div>
       </div>
+      {notification.showDemoInfo && (
+        <Notification
+          title="Info"
+          icon={<IconInfoCircle size={30} color="black" />}
+          radius="xs"
+          color="yellow"
+          onClose={() => setNotification({ showDemoInfo: false })}
+          className="fixed bottom-0 right-0 mb-4 mr-4"
+        >
+          This App is only a demo. Visit my{" "}
+          <a href="https://github.com/br3zn">GitHub</a> to get more information.
+        </Notification>
+      )}
     </>
   );
 }
