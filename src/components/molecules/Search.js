@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchTextInput from "@atoms/SearchTextInput";
+import SearchTextInput from "@components/atoms/SearchTextInput";
 import IconBubble from "@components/IconBubble";
 import { useStore } from "@lib/store";
 import shallow from "zustand/shallow";

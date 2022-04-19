@@ -1,5 +1,5 @@
 import "@styles/globals.css";
-import Layout from "@components/layout";
+import Layout from "@components/Layout";
 import { useApollo } from "@lib/apolloClient";
 import { ApolloProvider } from "@apollo/client";
 import { useCreateStore, Provider } from "@lib/store";
