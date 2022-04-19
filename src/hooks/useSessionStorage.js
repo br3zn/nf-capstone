@@ -1,3 +1,5 @@
+// Custom hook to use sessionStorage
+
 import { useState } from "react";
 
 export function useSessionStorage(key, initialValue) {
