@@ -2,7 +2,7 @@ import List from "@components/List";
 import { initializeApollo, addApolloState } from "@lib/apolloClient";
 import Head from "next/head";
 import { gql, NetworkStatus, useQuery } from "@apollo/client";
-import Search from "@molecules/Search";
+import Search from "@components/molecules/Search";
 import { useStore } from "@lib/store";
 
 export const ALL_STRAINS_QUERY = gql`
